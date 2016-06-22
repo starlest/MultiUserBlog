@@ -7,7 +7,8 @@ class BlogLikePostHandler(BlogHandler):
         key = db.Key.from_path('BlogPost', int(post_id),
                                parent=self.blog_key())
         p = db.get(key)
-        if p.key() not in self.user.liked_posts:
+        if p.user.key() != self.user.key() and p.key() not in \
+                self.user.liked_posts:
             p.likes += 1
             self.user.liked_posts.append(p.key())
             self.user.put()

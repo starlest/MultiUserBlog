@@ -16,6 +16,8 @@
                         liked
                     {% endif %}
                 {% endif %}
+                |
+                <a href="/comment/{{ p.key().id() }}">add comment</a>
                 {% if p.user.key() == user.key() %}
                     |
                     <a href="/edit/{{ p.key().id() }}">edit</a>

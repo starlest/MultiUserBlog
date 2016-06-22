@@ -1,5 +1,6 @@
 from google.appengine.ext import db
 from handlers import blog_handler
+from models.blog_post_comment import BlogPostComment
 from models.user import User
 
 
@@ -14,4 +15,7 @@ class BlogPost(db.Model):
 
     def render(self):
         self._render_text = self.content.replace('\n', '<br>')
-        return blog_handler.render_str("post.html", p=self)
+        comments = BlogPostComment.all().ancestor(self.key())
+        print comments.count()
+        return blog_handler.render_str("post.html", p=self,
+                                       comments=comments, user=self.user)

@@ -1,15 +1,36 @@
 <div class="post">
-  <div class="post-heading">
-    <div class="post-title">
-      {{p.subject}}
+    <div class="post-heading">
+        <div class="post-title">
+            <a href="/blog/{{ p.key().id() }}">{{ p.subject }}</a>
+        </div>
+
+        <div class="post-date">
+            {{ p.created.strftime("%b %d, %Y") }}
+        </div>
     </div>
 
-    <div class="post-date">
-      {{p.created.strftime("%b %d, %Y")}}
+    <div class="post-content">
+        {{ p._render_text | safe }}
     </div>
-  </div>
 
-  <div class="post-content">
-    {{p._render_text | safe}}
-  </div>
+    <br>
+    <H3 style="font-size: 18px; font-family: cursive">Comments</H3>
+    <hr>
+
+    <div class="post-comments">
+        {% for c in comments %}
+            <h4 style="color: cadetblue;">{{ c.user.name }}</h4>
+            {{ c.content | safe }}
+            {% if p.user.key().id() == user.key().id() %}
+                <div style="margin-top: 10px">
+                    <a href="/editcomment/{{ p.key().id() }}-{{ c.key().id()
+                            }}">edit</a>
+                    |
+                    <a href="/deletecomment/{{ p.key().id() }}-{{ c.key().id
+                    () }}">delete</a>
+                </div>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    </div>
 </div>

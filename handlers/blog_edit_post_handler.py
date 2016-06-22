@@ -1,7 +1,6 @@
-from handlers.blog_handler import BlogHandler
 from google.appengine.ext import db
 
-from models.blog_post import BlogPost
+from handlers.blog_handler import BlogHandler
 
 
 class BlogEditPostHandler(BlogHandler):
@@ -16,17 +15,16 @@ class BlogEditPostHandler(BlogHandler):
             self.redirect("/login")
 
     def post(self, post_id):
-        self.redirect('/blog')
-        if not self.user:
-            self.redirect('/blog')
+        key = db.Key.from_path('BlogPost', int(post_id), parent=self.blog_key())
+        p = db.get(key)
+
+        if not self.user or not p or p.user.key() != self.user.key():
+            return self.redirect('/login')
 
         subject = self.request.get('subject')
         content = self.request.get('content')
 
         if subject and content:
-            key = db.Key.from_path('BlogPost', int(post_id),
-                                   parent=self.blog_key())
-            p = db.get(key)
             p.subject = subject
             p.content = content
             p.put()
