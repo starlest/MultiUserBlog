@@ -42,7 +42,7 @@ class Register(BlogHandler):
         raise NotImplementedError
 
 
-class SignupHandler(Register):
+class BlogSignupHandler(Register):
     def done(self):
         # make sure the user doesn't already exist
         u = User.by_name(self.username)

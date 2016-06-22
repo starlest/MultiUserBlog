@@ -2,7 +2,7 @@ from handlers.blog_handler import BlogHandler
 from models.user import User
 
 
-class LoginHandler(BlogHandler):
+class BlogLoginHandler(BlogHandler):
     def get(self):
         self.render('login-form.html')
 

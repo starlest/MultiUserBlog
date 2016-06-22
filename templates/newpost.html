@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>new post</h2>
+    <header class="row text-center">
+      <h2>New Post</h2>
+    </header>
 
-    <form method="post">
-      <label>
+    <form class="row" method="post">
+      <label class="col-xs-12">
         <div>subject</div>
         <input type="text" name="subject" value="{{subject}}">
       </label>
 
-      <label>
+      <label class="col-xs-12">
         <div>blog</div>
         <textarea name="content">{{content}}</textarea>
       </label>
 
       <div class="error">{{error}}</div>
 
-      <input type="submit">
+      <input class="row" type="submit">
     </form>
 {% endblock %}

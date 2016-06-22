@@ -2,11 +2,30 @@
 
 {% block content %}
 
-    <hr>
-    
     {% for p in posts %}
-        {{ p.render() | safe }}
-        <br><br>
+        <div class="col-xs-12">
+            {{ p.render() | safe }}
+            <br>
+            <h4 style="display: inline; color: red">{{ p.likes }} likes </h4>
+            {% if user %}
+                {% if p.user.key() != user.key() %}
+                    |
+                    {% if p.key() not in user.liked_posts %}
+                        <a href="/like/{{ p.key().id() }}">like</a>
+                    {% else %}
+                        liked
+                    {% endif %}
+                {% endif %}
+                {% if p.user.key() == user.key() %}
+                    |
+                    <a href="/edit/{{ p.key().id() }}">edit</a>
+                    |
+                    <a href="/delete/{{ p.key().id() }}">delete</a>
+                {% endif %}
+            {% endif %}
+
+            <br><br>
+        </div>
     {% endfor %}
 
 {% endblock %}

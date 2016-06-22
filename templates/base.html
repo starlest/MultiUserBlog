@@ -1,36 +1,49 @@
 <!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <script type="text/javascript" src="js/jquery.js"></script>
+          <script src="js/bootstrap.min.js"></script>
         <link type="text/css" rel="stylesheet" href="/static/bootstrap.css"/>
         <link type="text/css" rel="stylesheet" href="/static/style.css"/>
         <title>Bloggie</title>
     </head>
 
-    <body class="container">
+    <body class="container-fluid">
+
         <header class="row">
             <div class="row">
-                {% if user %}
-                    <a href="/blog" class="main-title center-block">
+                    <a href="/blog" class="row main-title center-block">
                         Bloggie
                     </a>
-                {% else %}
-                    <a href="/" class="main-title center-block">
-                        Bloggie
-                    </a>
-                {% endif %}
             </div>
-            <div class="row text-right">
-                {% if user %}
-                    {{ user.name }} (
-                    <a class="login-link" href="/logout">logout</a>
-                    )
-                {% else %}
-                    <a class="login-link" href="/login">login</a>
-                    |
-                    <a class="login-link" href="/signup">signup</a>
-                {% endif %}
+
+            <div class="row">
+                <div class="col-xs-6 text-left">
+                    {% if user %}
+                        <a class="login-link" href="/blog/newpost">New
+                            Post</a>
+                    {% endif %}
+                </div>
+                <div class="col-xs-6 text-right">
+                    {% if user %}
+                        {{ user.name }} (
+                        <a class="login-link" href="/logout">logout</a>
+                        )
+                    {% else %}
+                        <a class="login-link" href="/login">login</a>
+                        |
+                        <a class="login-link" href="/signup">signup</a>
+                    {% endif %}
+                </div>
             </div>
+
         </header>
+
+        <hr style="border-color: blue">
 
         <div id="content" class="row">
             {% block content %}

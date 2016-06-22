@@ -1,4 +1,5 @@
 body {
+    max-width: 800px;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #333;
@@ -35,8 +36,9 @@ h2 {
 }
 
 label {
-  display: block;
-  font-size: 20px;
+    display: block;
+    margin: auto;
+    font-size: 20px;
 }
 
 label + label {
@@ -44,34 +46,41 @@ label + label {
 }
 
 input[type=text] {
-    width: 500px;
+    display: block;
+    margin: auto;
+    width: 100%;
     font-size: 20px;
     padding: 2px;
     font-family: monospace;
 }
 
 textarea {
-  width: 500px;
-  height: 400px;
-  font-size: 17px;
-  font-family: monospace;
+    display: block;
+    width: 100%;
+    margin: auto;
+    height: 400px;
+    font-size: 17px;
+    font-family: monospace;
+    resize: none;
 }
 
 input[type=submit] {
-  font-size: 24px;
+    margin: 15px;
+    font-size: 20px;
+}
+
+input[type=button] {
+    margin: 15px;
+    font-size: 20px;
 }
 
 .main-title {
     text-align: center;
-    color: #222;
+    color: blue;
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     text-decoration: none;
-}
-
-.post + .post {
-    margin-top: 15px;
 }
 
 .post-heading {
@@ -98,5 +107,9 @@ input[type=submit] {
 
 .main-body {
     text-align: center;
+}
+
+.new-post-subject {
+    margin: auto;
 }
 
