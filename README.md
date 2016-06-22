@@ -1,9 +1,13 @@
 # MultiUserBlog
 Project 3 of Udacity's Full Stack Web Developer Nanodegree Program
 
-## Table of contents
+## Table of contents 
+* [Easy-Usage](#easy-usage)
 * [Install](#install)
 * [Usage](#usage)
+
+## Easy-Usage
+1) Visit the publicly hosted project at this [link](http://blissful-age-134823.appspot.com/). 
 
 ## Install
 1) Make sure [python 2.7](https://www.python.org/downloads/) is installed on your computer.  
